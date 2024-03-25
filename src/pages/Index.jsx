@@ -33,6 +33,8 @@ const Index = () => {
     setCandidatesList((prevCandidates) => prevCandidates.map((candidate) => (candidate.id === candidateId ? { ...candidate, stage: newStage } : candidate)));
   };
 
+  
+
   return (
     <Box p={8}>
       <Flex justify="space-between" align="center" mb={8}>
@@ -50,7 +52,7 @@ const Index = () => {
             {candidatesList
               .filter((candidate) => candidate.stage === stage)
               .map((candidate) => (
-                <Box key={candidate.id} p={4} borderWidth={1} borderRadius="md" cursor="move">
+                <Box key={candidate.id} p={4} borderWidth={1} borderRadius="md" onClick={() => moveCandidate(candidate.id, candidate.stage, stages[stages.indexOf(candidate.stage) + 1])}>
                   <Flex align="center" mb={2}>
                     <Avatar src={candidate.avatar} size="sm" mr={2} />
                     <Text fontWeight="bold">{candidate.name}</Text>
